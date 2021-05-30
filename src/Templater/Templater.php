@@ -6,6 +6,7 @@ use Jascha030\PTempo\Engine\StandardTemplateEngine;
 use Jascha030\PTempo\Engine\TemplateEngineInterface;
 use Jascha030\PTempo\Engine\TwigTemplateEngine;
 use Jascha030\PTempo\Exception\InvalidFilePathFileException;
+use Jascha030\PTempo\Exception\OutputFileExistsException;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -40,6 +41,7 @@ final class Templater
 
     /**
      * @throws \Jascha030\PTempo\Exception\InvalidFilePathFileException
+     * @throws \Jascha030\PTempo\Exception\OutputFileExistsException
      */
     public function renderTemplate(
         string $templatePath,
@@ -58,7 +60,7 @@ final class Templater
         }
 
         if ($overwrite && $this->fileSystem->exists($outputPath)) {
-
+            throw new OutputFileExistsException($outputPath);
         }
 
         $this->fileSystem->dumpFile($outputPath, $template);
