@@ -7,6 +7,7 @@
         "twig/twig": "^3.3"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "^9.5",
         "friendsofphp/php-cs-fixer": "^3.0"
     },
@@ -17,5 +18,10 @@
             "email": "contact@jaschavanaalst.nl"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Jascha030\\PTempo\\": "src"
+        }
+    }
 }
