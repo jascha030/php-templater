@@ -3,7 +3,9 @@
 namespace Jascha030\PTempo\Templater;
 
 use Jascha030\PTempo\Engine\StandardTemplateEngine;
+use Jascha030\PTempo\Engine\TemplateEngineInterface;
 use Jascha030\PTempo\Engine\TwigTemplateEngine;
+use Jascha030\PTempo\Exception\InvalidFilePathFileException;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -17,7 +19,7 @@ final class Templater
      */
     public const TEMPLATE_ENGINES = [
         StandardTemplateEngine::class,
-        TwigTemplateEngine::class
+        TwigTemplateEngine::class,
     ];
 
     private Filesystem $fileSystem;
@@ -36,18 +38,38 @@ final class Templater
         return $this;
     }
 
-    public function renderTemplate(string $templatePath, array $userInput, ?string $outputPath = null): void
-    {
+    /**
+     * @throws \Jascha030\PTempo\Exception\InvalidFilePathFileException
+     */
+    public function renderTemplate(
+        string $templatePath,
+        array $userInput,
+        bool $overwrite = false,
+        ?string $outputPath = null
+    ): void {
         if (! $this->fileSystem->exists($templatePath)) {
-            // todo: throw custom exception
+            throw new InvalidFilePathFileException($templatePath);
         }
 
-        $template = $this->templateEngine->boilerplate($templatePath, $userInput);
+        $template = $this->getTemplateEngine()->boilerplate($templatePath, $userInput);
 
         if (! $outputPath) {
             $outputPath = $templatePath;
         }
 
+        if ($overwrite && $this->fileSystem->exists($outputPath)) {
+
+        }
+
         $this->fileSystem->dumpFile($outputPath, $template);
+    }
+
+    private function getTemplateEngine(): TemplateEngineInterface
+    {
+        if (! isset($this->templateEngine)) {
+            $this->templateEngine = new StandardTemplateEngine();
+        }
+
+        return $this->templateEngine;
     }
 }
