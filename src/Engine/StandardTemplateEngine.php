@@ -2,11 +2,17 @@
 
 namespace Jascha030\PTempo\Engine;
 
-class TemplateEngine implements TemplateEngineInterface
+/**
+ * Class StandardTemplateEngine
+ * Simple default template engine using plain php to render data.
+ *
+ * @package Jascha030\PTempo\Engine
+ */
+class StandardTemplateEngine implements TemplateEngineInterface
 {
-    public function boilerplate(string $templatePath, array $userInput = []): string
+    public function renderTemplateData(string $templatePath, array $userInput = []): string
     {
-        $template = file_get_contents($templatePath);
+        $template = @file_get_contents($templatePath);
 
         foreach ($userInput as $key => $value) {
             $template = str_replace("{{$key}}", $value, $template);
