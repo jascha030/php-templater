@@ -1,2 +1,22 @@
 #!/usr/bin/env php
 <?php
+
+declare(strict_types=1);
+
+use Symfony\Component\Console\Application;
+
+
+/**
+ * Autoloader
+ */
+require_once (include dirname(__FILE__, 2) . '/includes/loader.php')(__FILE__);
+
+/**
+ * Symfony/Console Application
+ */
+$app = new Application('PTempo - a Simple Php Templater.', '1.0.0');
+
+/**
+ * Commands
+ */
+// Todo: add commands.
