@@ -22,7 +22,12 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Jascha030\\PTempo\\": "src"
+            "Jascha030\\PTemplater\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jascha030\\PTemplater\\": "src"
         }
     }
 }

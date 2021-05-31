@@ -1,10 +1,10 @@
 <?php
 
-namespace Jascha030\PTempo\Engine;
+namespace Jascha030\PTemplater\Engine;
 
 /**
  * Interface TemplateEngineInterface
- * @package Jascha030\PTempo\Engine
+ * @package Jascha030\PTemplater\Engine
  */
 interface TemplateEngineInterface
 {

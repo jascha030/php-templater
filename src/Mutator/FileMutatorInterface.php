@@ -1,8 +1,7 @@
 <?php
 
-namespace Jascha030\PTempo\Handler;
+namespace Jascha030\PTemplater\Mutator;
 
-class FileMutatorInterface
+interface FileMutatorInterface
 {
-
 }

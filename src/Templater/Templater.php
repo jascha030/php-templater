@@ -1,17 +1,17 @@
 <?php
 
-namespace Jascha030\PTempo\Templater;
+namespace Jascha030\PTemplater\Templater;
 
-use Jascha030\PTempo\Engine\StandardTemplateEngine;
-use Jascha030\PTempo\Engine\TemplateEngineInterface;
-use Jascha030\PTempo\Engine\TwigTemplateEngine;
-use Jascha030\PTempo\Exception\InvalidFilePathFileException;
-use Jascha030\PTempo\Exception\OutputFileExistsException;
+use Jascha030\PTemplater\Engine\StandardTemplateEngine;
+use Jascha030\PTemplater\Engine\TemplateEngineInterface;
+use Jascha030\PTemplater\Engine\TwigTemplateEngine;
+use Jascha030\PTemplater\Exception\InvalidFilePathFileException;
+use Jascha030\PTemplater\Exception\OutputFileExistsException;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Class Templater
- * @package Jascha030\PTempo\Templater
+ * @package Jascha030\PTemplater\Templater
  */
 final class Templater
 {
@@ -40,8 +40,8 @@ final class Templater
     }
 
     /**
-     * @throws \Jascha030\PTempo\Exception\InvalidFilePathFileException
-     * @throws \Jascha030\PTempo\Exception\OutputFileExistsException
+     * @throws \Jascha030\PTemplater\Exception\InvalidFilePathFileException
+     * @throws \Jascha030\PTemplater\Exception\OutputFileExistsException
      */
     public function renderTemplate(
         string $templatePath,

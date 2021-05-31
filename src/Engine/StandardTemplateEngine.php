@@ -1,12 +1,12 @@
 <?php
 
-namespace Jascha030\PTempo\Engine;
+namespace Jascha030\PTemplater\Engine;
 
 /**
  * Class StandardTemplateEngine
  * Simple default template engine using plain php to render data.
  *
- * @package Jascha030\PTempo\Engine
+ * @package Jascha030\PTemplater\Engine
  */
 class StandardTemplateEngine implements TemplateEngineInterface
 {

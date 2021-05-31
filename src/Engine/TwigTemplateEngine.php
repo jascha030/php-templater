@@ -1,6 +1,6 @@
 <?php
 
-namespace Jascha030\PTempo\Engine;
+namespace Jascha030\PTemplater\Engine;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
