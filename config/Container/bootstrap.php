@@ -2,7 +2,7 @@
 
 use DI\ContainerBuilder;
 
-require (require dirname(__FILE__, 2) . 'includes/loader.php') (__FILE__);
+require (require dirname(__FILE__, 3) . 'includes/loader.php') (__FILE__);
 
 $containerBuilder = new ContainerBuilder();
 $containerBuilder->addDefinitions(__DIR__ . '/containerConfig.php');
