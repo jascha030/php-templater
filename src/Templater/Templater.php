@@ -69,16 +69,22 @@ final class Templater
 
         if (! $this->fileSystem->exists($outputPath)) {
             $this->fileSystem->touch($outputPath);
-        } else {
-            $backup = file_get_contents($outputPath);
-            // Todo: store backup somewhere, (maybe redis?).
         }
+
+        // else {
+        // $backup = file_get_contents($outputPath);
+        // Todo: store backup somewhere, (maybe redis?).
+        // }
 
         $this->fileSystem->dumpFile($outputPath, $template);
 
         return (new \SplFileInfo($outputPath))->getRealPath();
     }
 
+    /**
+     * Get set templating engine, defaults to StandardTemplateEngine.
+     * @return \Jascha030\PTemplater\Engine\TemplateEngineInterface
+     */
     private function getTemplateEngine(): TemplateEngineInterface
     {
         if (! isset($this->templateEngine)) {
