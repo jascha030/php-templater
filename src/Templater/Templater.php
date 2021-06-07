@@ -25,14 +25,14 @@ final class Templater
 
     private Filesystem $fileSystem;
 
-    private StandardTemplateEngine $templateEngine;
+    private TemplateEngineInterface $templateEngine;
 
     public function __construct(Filesystem $fileSystem)
     {
         $this->fileSystem = $fileSystem;
     }
 
-    public function setEngine(StandardTemplateEngine $engine): self
+    public function setEngine(TemplateEngineInterface $engine): self
     {
         $this->templateEngine = $engine;
 
@@ -48,22 +48,35 @@ final class Templater
         array $userInput,
         bool $overwrite = false,
         ?string $outputPath = null
-    ): void {
+    ): string {
         if (! $this->fileSystem->exists($templatePath)) {
             throw new InvalidFilePathFileException($templatePath);
         }
 
-        $template = $this->getTemplateEngine()->boilerplate($templatePath, $userInput);
-
-        if (! $outputPath) {
+        if (! $outputPath && $overwrite) {
             $outputPath = $templatePath;
         }
 
-        if ($overwrite && $this->fileSystem->exists($outputPath)) {
+        if (! $overwrite && $this->fileSystem->exists($outputPath)) {
             throw new OutputFileExistsException($outputPath);
         }
 
+        $template = $this->getTemplateEngine()->renderTemplateData($templatePath, $userInput);
+
+        if (! $outputPath) {
+            return $template;
+        }
+
+        if (! $this->fileSystem->exists($outputPath)) {
+            $this->fileSystem->touch($outputPath);
+        } else {
+            $backup = file_get_contents($outputPath);
+            // Todo: store backup somewhere, (maybe redis?).
+        }
+
         $this->fileSystem->dumpFile($outputPath, $template);
+
+        return (new \SplFileInfo($outputPath))->getRealPath();
     }
 
     private function getTemplateEngine(): TemplateEngineInterface
