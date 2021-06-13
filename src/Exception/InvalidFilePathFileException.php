@@ -1,10 +1,10 @@
 <?php
 
-namespace Jascha030\PTempo\Exception;
+namespace Jascha030\PTemplater\Exception;
 
 /**
  * Class InvalidFilePathFileException
- * @package Jascha030\PTempo\Exception
+ * @package Jascha030\PTemplater\Exception
  */
 class InvalidFilePathFileException extends TemplateFileExceptionAbstract
 {

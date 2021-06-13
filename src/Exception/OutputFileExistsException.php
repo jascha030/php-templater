@@ -1,12 +1,12 @@
 <?php
 
-namespace Jascha030\PTempo\Exception;
+namespace Jascha030\PTemplater\Exception;
 
-use Jascha030\PTempo\Templater\Templater;
+use Jascha030\PTemplater\Templater\Templater;
 
 /**
  * Class OutputFileExistsException
- * @package Jascha030\PTempo\Exception
+ * @package Jascha030\PTemplater\Exception
  */
 class OutputFileExistsException extends TemplateFileExceptionAbstract
 {

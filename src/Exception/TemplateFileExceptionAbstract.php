@@ -1,12 +1,12 @@
 <?php
 
-namespace Jascha030\PTempo\Exception;
+namespace Jascha030\PTemplater\Exception;
 
 use Throwable;
 
 /**
  * Class TemplateFileExceptionAbstract
- * @package Jascha030\PTempo\Exception
+ * @package Jascha030\PTemplater\Exception
  */
 abstract class TemplateFileExceptionAbstract extends \Exception implements TemplateFileExceptionInterface
 {
