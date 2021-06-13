@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":210:{a:2:{s:7:"defects";a:1:{s:41:"Templater\TemplaterTest::testConstruction";i:4;}s:5:"times";a:2:{s:41:"Templater\TemplaterTest::testConstruction";d:0.04;s:41:"Templater\TemplaterTest::testSetTemplater";d:0.001;}}}
